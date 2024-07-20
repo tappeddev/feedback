@@ -2,6 +2,7 @@
 
 import 'package:feedback/src/painter.dart';
 import 'package:flutter/material.dart';
+import 'package:pointer_interceptor/pointer_interceptor.dart';
 
 class PaintOnChild extends StatelessWidget {
   const PaintOnChild({
@@ -20,7 +21,10 @@ class PaintOnChild extends StatelessWidget {
     return Stack(
       children: <Widget>[
         child,
-        if (isPaintingActive) Painter(controller),
+        if (isPaintingActive)
+          PointerInterceptor(
+            child: Painter(controller),
+          ),
       ],
     );
   }
